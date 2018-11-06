@@ -1,22 +1,33 @@
 let mongoose = require('mongoose');
 
-
-//Du må bestemme deg hvordan du skal strukturere data systemet her ... 
-let UserAnalyticsSchema = mongoose.Schema({
-
+let analyticsSchema = mongoose.Schema({
+    id:{
+       type: String,
+       required: true
+    
+    },
+    avragebpm:{
+        type: String,
+        required: true
+    
+    }, 
+    dateTime:{
+        type: String,
+        required: true
+    }
 });
 
-let userAnalytics = mongoose.model('UserAnalytics', UserAnalyticsSchema);
+let Analytics = mongoose.model('analytics', analyticsSchema);
 
 module.exports.AddUserAnalytics = (userData, callback) => {
-    userAnalytics.create(userData, callback);
+    Analytics.create(userData, callback);
 };
 
 module.exports.getUserAnalytics = (callback, limit) => {
-    userAnalytics.find(callback).limit(limit);
+    Analytics.find(callback).limit(limit);
 };
 
 module.exports.deleteUserAnalytic = (id, callback) =>{
     let query = {_id: id}; 
-    userAnalytics.remove(query, callback); 
+    Analytics.remove(query, callback); 
 }
