@@ -1,7 +1,7 @@
 let mongoose = require('mongoose');
 
 let analyticsSchema = mongoose.Schema({
-    id:{
+    deviceid:{
        type: String,
        required: true
     

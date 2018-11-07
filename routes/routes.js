@@ -20,12 +20,4 @@ module.exports = (app) => {
             res.json(userdata);
         });
     });
-
-    app.delete('/api/UserAnalytics/:_id', (req, res) => {
-        let id = req.params._id;
-        Analytics.deleteUserAnalytic(id, (err, userdata) => {
-            if (err) throw err;
-            res.json(userdata);
-        });
-    });
 }
