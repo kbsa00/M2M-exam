@@ -4,8 +4,10 @@ const client = mqtt.connect('mqtt://m23.cloudmqtt.com:14527', {
     username: "khalid",
     password: "khalid"
 });
+
 let msg;
 module.exports = (io) => {
+    io.on('connection', function (socket) {
     client.on('connect', () => {
         client.subscribe('outTopic/message')
         client.subscribe('#');
@@ -14,18 +16,18 @@ module.exports = (io) => {
     client.on('message', (topic, message) => {
         if (topic === 'outTopic/message') {
             msg = message.toString();
-            console.log(msg)
-            io.on('connection', function (socket) {
+            
+            
                 currentMinute = today.getMinutes();
                 socket.emit('bpm', {
                     bpm: msg,
                     time: currentMinute
                 });
-                
-            });
+      
+          
         }
     });
-
+    });
 }
 
 /**

@@ -1,17 +1,13 @@
 const express = require('express'); 
 const app = express();
 const path = require('path');
-const mqtt = require('mqtt'); 
-const client = mqtt.connect('mqtt://m23.cloudmqtt.com:14527', {username:"khalid", password:"khalid"});
 const http = require('http'); 
 const socket = require('socket.io'); 
-
 
 require('./model/user');
 require('./middlewares/middlewares')(app);
 require('./services/passport'); 
 require('./routes/routes')(app);
-
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'))
@@ -27,4 +23,3 @@ server.listen(PORT);
 console.log(`Listening to Port ${PORT}`);
 const io = socket(server);
 require('./services/mqtt')(io);
-//require('./socket/wshandler')(io); 

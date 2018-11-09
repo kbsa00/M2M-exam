@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Line as LineChart} from 'react-chartjs-2';
-import io  from 'socket.io-client';
+import io from 'socket.io-client';
 
 class LiveGraph extends Component {
 
@@ -9,35 +9,30 @@ class LiveGraph extends Component {
     this.state = {
       today: '', 
       bpminfo: [], 
-      time: []
     }
 
-    if(process.env.NODE_ENV === 'development'){
-      this.socket = io('localhost:5000');
-    }else if(process.env.NODE_ENV === 'production'){
-      this.socket = io('https://m2m-exam.herokuapp.com/');
-    }
-    
-    
-    this.socket = io('localhost:5000');
-    this.socket.on('bpm', data => {
-      addingBpm(data);
-      
-      console.log(data);
-    })
 
-    const addingBpm = data => {
-      this.setState({bpminfo:[...this.state.bpminfo, data.bpm]});
-      this.setState({time:[...this.state.time, data.time]});  
-    }
   }
 
   componentDidMount(){
     this.setState({
       today: this.gettingDate()
-    })
+    });
+
+    this.socket = io('localhost:5000');
+    this.socket.on('bpm', data => {
+      addingBPM(data);
+      console.log(data); 
+    }); 
+    const addingBPM = data => {
+      this.setState({bpminfo:[...this.state.bpminfo, data]});
+    }
+
+    console.log(this.state.bpminfo); 
+
   }
 
+ 
   gettingDate(){
     var today = new Date();
     var dd = today.getDate();
@@ -54,16 +49,16 @@ class LiveGraph extends Component {
   }
 
   render() {
-  
     let data = {
-      labels: this.state.time,
+      labels: this.state.bpminfo.map((o) => o.time),
       datasets: [
         {
           label: `Live Heart Beat Monitor - ${this.state.today}`,
-          data: this.state.bpminfo
+          data: this.state.bpminfo.map((o) => o.bpm)
         }
       ]
     }
+
     return(
       <div className="container">
       <div>
@@ -73,11 +68,10 @@ class LiveGraph extends Component {
           width={600}
           height={250}
           />
-
           </div>
       </div>
     )
   }
 }
 
-export default LiveGraph
+export default LiveGraph;
