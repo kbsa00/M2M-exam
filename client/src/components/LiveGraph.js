@@ -14,7 +14,7 @@ class LiveGraph extends Component {
 
     if(process.env.NODE_ENV === 'development'){
       this.socket = io('localhost:5000');
-    }else{
+    }else if(process.env.NODE_ENV === 'production'){
       this.socket = io('https://m2m-exam.herokuapp.com/');
     }
     
