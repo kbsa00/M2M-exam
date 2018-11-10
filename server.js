@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const http = require('http'); 
-const socket = require('socket.io'); 
+const socket = require('socket.io')({
+    transports: ['xhr-polling']
+}); 
 
 require('./model/user');
 require('./middlewares/middlewares')(app);
@@ -21,8 +23,5 @@ const PORT = process.env.PORT || 5000;
 server.listen(PORT);
 console.log(`Listening to Port ${PORT}`);
 const io = socket(server);
-io.configure(function(){
-    io.set("transports", ['xhr-polling']); 
-    io.set("polling duration", 10);
-});
+
 require('./services/mqtt')(io);
