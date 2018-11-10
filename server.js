@@ -21,4 +21,8 @@ const PORT = process.env.PORT || 5000;
 server.listen(PORT);
 console.log(`Listening to Port ${PORT}`);
 const io = socket(server);
+io.configure(function(){
+    io.set("transports", ['xhr-polling']); 
+    io.set("polling duration", 10);
+});
 require('./services/mqtt')(io);
