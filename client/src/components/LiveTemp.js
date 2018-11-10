@@ -16,7 +16,7 @@ class LiveTemp extends Component {
         if(process.env.NODE_ENV === 'development'){
             this.socket = io('localhost:5000');
         }else{
-            this.socket = io('https://m2m-exam.herokuapp.com/');
+            this.socket = io(window.location.origin);
         }
      
 
@@ -28,7 +28,7 @@ class LiveTemp extends Component {
         }
       }
         
-      
+
       render() {
         let data = {
           labels: this.state.tempinfo.map((o) => o.time),
