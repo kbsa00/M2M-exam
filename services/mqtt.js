@@ -8,6 +8,12 @@ const client = mqtt.connect('mqtt://m23.cloudmqtt.com:14527', {
 
 let msg;
 module.exports = (io) => {
+
+    io.configure(function(){
+        io.set("transports", ['xhr-polling']); 
+        io.set("polling duration", 10);
+    });
+
     io.on('connection', function (socket) {
     client.on('connect', () => {
         client.subscribe('outTopic/message');
