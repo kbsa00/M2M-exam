@@ -8,11 +8,11 @@ export default function Header() {
        <h1 className="header navbar-brand">M2M-Eksamen</h1>
         <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-               
+              
             </li>
 
             <li className="nav-item active">
-                
+               
             </li>
 
             <li className="nav-item active">

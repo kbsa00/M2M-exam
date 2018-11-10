@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Line as LineChart} from 'react-chartjs-2';
 import io from 'socket.io-client';
 
-class LiveGraph extends Component {
+class LiveBPM extends Component {
 
   constructor(props){
     super(props);
@@ -10,8 +10,6 @@ class LiveGraph extends Component {
       today: '', 
       bpminfo: [], 
     }
-
-
   }
 
   componentDidMount(){
@@ -31,8 +29,7 @@ class LiveGraph extends Component {
     console.log(this.state.bpminfo); 
 
   }
-
- 
+  
   gettingDate(){
     var today = new Date();
     var dd = today.getDate();
@@ -62,7 +59,7 @@ class LiveGraph extends Component {
     return(
       <div className="container">
       <div>
-          <h4 className="center">Live Heatbeat</h4>
+          <h4>Live Heartbeat</h4>
         <LineChart 
           data={data}
           width={600}
@@ -74,4 +71,4 @@ class LiveGraph extends Component {
   }
 }
 
-export default LiveGraph;
+export default LiveBPM;
