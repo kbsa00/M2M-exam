@@ -17,17 +17,18 @@ class LiveBPM extends Component {
       today: this.gettingDate()
     });
 
-    this.socket = io('localhost:5000');
+    if(process.env.NODE_ENV === 'development'){
+      this.socket = io('localhost:5000');
+    }else{
+      this.socket = io('https://m2m-exam.herokuapp.com/');
+    }
+   
     this.socket.on('bpm', data => {
       addingBPM(data);
-      console.log(data); 
     }); 
     const addingBPM = data => {
       this.setState({bpminfo:[...this.state.bpminfo, data]});
     }
-
-    console.log(this.state.bpminfo); 
-
   }
   
   gettingDate(){

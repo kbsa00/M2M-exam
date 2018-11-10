@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header';
-import LiveBPM from './LiveBPM';
+import LiveFeed from './LiveFeed';
 import Landing from './Landing'; 
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
@@ -13,7 +13,7 @@ class App extends Component {
           <Header/>
             <Switch>
                 <Route exact path='/' component={Landing} />
-                <Route path ='/live' component={LiveBPM} />
+                <Route path ='/live' component={LiveFeed} />
             </Switch>
          </div>        
         </BrowserRouter>
