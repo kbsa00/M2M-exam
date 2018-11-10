@@ -16,7 +16,7 @@ class LiveTemp extends Component {
         if(process.env.NODE_ENV === 'development'){
             this.socket = io('localhost:5000');
         }else{
-            this.socket = io(window.location.origin);
+            this.socket = io('/');
         }
      
 
