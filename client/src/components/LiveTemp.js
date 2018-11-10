@@ -28,6 +28,7 @@ class LiveTemp extends Component {
         }
       }
         
+      
       render() {
         let data = {
           labels: this.state.tempinfo.map((o) => o.time),
