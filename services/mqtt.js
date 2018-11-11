@@ -11,10 +11,10 @@ module.exports = (io) => {
     client.on('connect', () => {
         client.subscribe('outTopic/message');
         client.subscribe('outTopic/temp');
+        client.subscribe('outTopic/movement');
     });
 
     io.on('connection', function (socket) {
-        
 
         client.on('message', (topic, message) => {
             if (topic === 'outTopic/message') {
@@ -31,6 +31,11 @@ module.exports = (io) => {
                     temp: message.toString(),
                     time: currentMinute
                 });
+            }
+
+            if (topic === 'outTopic/movement') {
+                socket.emit('movement', message.toString());
+            
             }
         });
     });
