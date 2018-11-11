@@ -17,6 +17,7 @@ module.exports = (io) => {
         client.on('message', (topic, message) => {
             if (topic === 'outTopic/message') {
                 msg = message.toString();
+                console.log(message.toString());
                 currentMinute = today.getMinutes();
                 socket.emit('bpm', {
                     bpm: msg,
