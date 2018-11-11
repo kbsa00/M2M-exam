@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Line as LineChart} from 'react-chartjs-2';
 import io from 'socket.io-client';
 
+
 class LiveBPM extends Component {
 
   constructor(props){
@@ -22,16 +23,16 @@ class LiveBPM extends Component {
     }else{
       this.socket = io('/');
     }
-   
     this.socket.on('bpm', data => {
       console.log(data);
       addingBPM(data);
     }); 
+    
     const addingBPM = data => {
       this.setState({bpminfo:[...this.state.bpminfo, data]});
     }
   }
-  
+
   gettingDate(){
     var today = new Date();
     var dd = today.getDate();
