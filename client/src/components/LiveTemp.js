@@ -16,7 +16,7 @@ class LiveTemp extends Component {
         if(process.env.NODE_ENV === 'development'){
             this.socket = io('localhost:5000');
         }else{
-            this.socket = io('ws://m2m-exam.herokuapp.com/socket.io/?EIO=4&transport=websocket');
+            this.socket = io('ws://m2m-exam.herokuapp.com:80/socket.io/?EIO=4&transport=websocket');
         }
      
 
