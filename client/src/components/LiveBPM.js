@@ -20,7 +20,7 @@ class LiveBPM extends Component {
     if(process.env.NODE_ENV === 'development'){
       this.socket = io('localhost:5000');
     }else{
-      this.socket = io(window.location.hostname);
+      this.socket = io('m2m-exam.herokuapp.com/socket.io/?EIO=4&transport=websocket');
     }
    
     this.socket.on('bpm', data => {

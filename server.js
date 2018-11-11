@@ -2,9 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const http = require('http'); 
-const socket = require('socket.io')({
-    transports: ['xhr-polling']
-}); 
+const socket = require('socket.io'); 
 
 require('./model/user');
 require('./middlewares/middlewares')(app);
