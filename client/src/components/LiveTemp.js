@@ -16,11 +16,12 @@ class LiveTemp extends Component {
         if(process.env.NODE_ENV === 'development'){
             this.socket = io('localhost:5000');
         }else{
-            this.socket = io('m2m-exam.herokuapp.com');
+            this.socket = io('/');
         }
      
 
         this.socket.on('temp', data => {
+          console.log(data);
           addingTemp(data);
         }); 
         const addingTemp = data => {
