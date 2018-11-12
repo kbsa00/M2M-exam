@@ -1,4 +1,5 @@
 let today = new Date();
+let requests = require('../services/requestaxios');
 require('events').EventEmitter.prototype._maxListeners = 100;
 const mqtt = require('mqtt');
 const client = mqtt.connect('mqtt://m23.cloudmqtt.com:14527', {
@@ -12,6 +13,7 @@ module.exports = (io) => {
         client.subscribe('outTopic/message');
         client.subscribe('outTopic/temp');
         client.subscribe('outTopic/movement');
+        client.subscribe('outTopic/postreq');
     });
 
     io.on('connection', function (socket) {
@@ -35,48 +37,7 @@ module.exports = (io) => {
 
             if (topic === 'outTopic/movement') {
                 socket.emit('movement', message.toString());
-            
             }
         });
     });
 }
-
-
-
-/**
- * 
-let msg;
-module.exports = (io) => {  
-    io.on('connection', function (socket) {
-        socket.on('disconnect', function () {
-            
-            console.log('disconnected');
-        });
-        
-        client.on('connect', () => {
-            client.subscribe('outTopic/message');
-            client.subscribe('outTopic/temp');
-        });
-
-        client.on('message', (topic, message) => {
-            if (topic === 'outTopic/message') {
-                currentMinute = today.getMinutes();
-                socket.emit('bpm', {
-                    bpm: message.toString(),
-                    time: currentMinute
-                });
-            }
-
-            if (topic === 'outTopic/temp') {
-                let tempMessage = message.toString();
-                console.log(tempMessage)
-                currentMinute = today.getMinutes();
-                socket.emit('temp', {
-                    temp: tempMessage,
-                    time: currentMinute
-                });
-            }
-        });
-    });
-}
- */

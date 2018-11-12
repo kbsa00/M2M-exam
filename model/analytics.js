@@ -1,18 +1,26 @@
 let mongoose = require('mongoose');
 
 let analyticsSchema = mongoose.Schema({
-    deviceid:{
+    deviceID:{
        type: String,
        required: true
     
     },
-    avragebpm:{
+    timestamp:{
         type: String,
         required: true
     
     }, 
-    dateTime:{
-        type: String,
+    temp:{
+        type: Number,
+        required: true
+    },
+    movements:{
+        type: Number,
+        required: true
+    },
+    bpm:{
+        type: Number,
         required: true
     }
 });

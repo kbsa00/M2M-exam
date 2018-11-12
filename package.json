@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/kbsa00/M2M-exam#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "concurrently": "^4.0.1",
@@ -31,7 +32,8 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.1.1",
+    "uniqid": "^5.0.3"
   },
   "devDependencies": {},
   "description": ""

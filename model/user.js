@@ -1,3 +1,6 @@
+/**
+ * Mongoose Schema for Login user. 
+ */
 let mongoose = require('mongoose');
 
 let userSchema = mongoose.Schema({
