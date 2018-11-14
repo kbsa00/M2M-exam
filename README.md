@@ -13,10 +13,11 @@ Main libraries that has been used in this project.
 - Socketio
 - react-chartjs-2
 - react-sparklines
+- Express
 
 ---
 #### Cloud platforms :cloud:
-- Mlab
+- MLab
 - Heroku
 
 ---
@@ -33,3 +34,21 @@ Procede to the Client folder and do the same thing there aswell
 ```
 npm run dev
 ```
+
+Now you should be able to start the probject and now interact with the page. 
+
+#### Ports 
+- Server, Nodejs is running on port **5000**
+- Client, Reactjs is running on port **8080**
+
+Changing the port on the Client is not a problem. You can easily do this through the package.json in Client folder. and change the start script to the port of your choice. 
+
+Changing the port Server is little bit more complex. Follow these steps and you have changed the port. 
+
+- Server.js start listening on port of your choice
+- Go to package.json in Client folder and change the proxy object to the
+  localhost:PORTOFYOURCHOICE
+  
+  
+  
+  
