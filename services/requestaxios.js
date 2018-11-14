@@ -1,6 +1,8 @@
 const axios = require('axios');
 const mqtt = require('mqtt');
-const client = mqtt.connect('mqtt://m23.cloudmqtt.com:14527',{
+let keys = require('../config/keys');
+
+const client = mqtt.connect('mqtt://m23.cloudmqtt.com:14527', {
     username: "khalid",
     password: "khalid"
 });
@@ -13,7 +15,17 @@ client.on('message', (topic, message) => {
     if (topic === 'outTopic/postreq') {
 
         if (process.env.NODE_ENV === 'production') {
-            axios.post('https://m2m-exam.herokuapp.com/api/UserAnalytics', message.toString())
+            let obj = JSON.parse(message.toString());
+
+            axios.post('https://m2m-exam.herokuapp.com/api/UserAnalytics', {
+                    deviceID: obj.deviceID,
+                    timestamp: obj.timestamp,
+                    temp: obj.temp,
+                    movements: obj.movements,
+                    bpm: obj.bpm
+                },{
+                    headers: { Authorization: keys.API_KEY}
+                }).then(() => console.log('hey hey pushed TIL DB'))
                 .catch(err => console.log(err));
         } else {
             let obj = JSON.parse(message.toString());
@@ -23,12 +35,13 @@ client.on('message', (topic, message) => {
                     temp: obj.temp,
                     movements: obj.movements,
                     bpm: obj.bpm
+                },{
+                    headers: { Authorization: keys.API_KEY}
                 })
                 .then((res) => {
-                    
+                    console.log('pushed te db')
                 })
                 .catch(error => console.log(error));
         }
     }
 });
-

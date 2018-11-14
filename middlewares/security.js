@@ -1,4 +1,5 @@
 let keys = require('../config/keys');
+
 module.exports.authenticate = (req, res, next) => {
     let headerApi = req.headers.authorization;
 
