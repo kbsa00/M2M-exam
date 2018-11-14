@@ -4,9 +4,9 @@ const path = require('path');
 const http = require('http'); 
 const socket = require('socket.io');
 
-require('./model/user');
 require('./middlewares/middlewares')(app);
-// (Login) require('./services/passport'); 
+//require('./model/user'); - For Login 
+//require('./services/passport');  - For Login
 require('./routes/routes')(app);
 
 if (process.env.NODE_ENV === 'production') {
@@ -15,7 +15,6 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
 }
-console.log(process.env.NODE_ENV); 
 
 const server = http.Server(app); 
 const PORT = process.env.PORT || 5000;

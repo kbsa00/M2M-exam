@@ -14,7 +14,7 @@ export default function Header() {
             </li>
 
             <li className="nav-item active">
-            <Link to="/#" style={{ textDecoration: 'none' }}>
+            <Link to="/overview" style={{ textDecoration: 'none' }}>
               Overview
             </Link>
             </li>

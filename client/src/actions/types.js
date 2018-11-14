@@ -1,1 +1,1 @@
-export const ACTION_TYPE = 'action_type';
+export const GET_DATA = 'get_data';

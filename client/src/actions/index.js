@@ -1,5 +1,16 @@
-import {ACTION_TYPE} from './types';
+import {GET_DATA} from './types';
+import axios from 'axios';
 
-export const something = ()=>{
-    dispatch({type: ACTION_TYPE, payload: 'something' }); 
+
+export const retrieveAllData = () => async(dispatch) =>{
+    try {
+        const res = await axios.get('/api/UserAnalytics');
+        dispatch({
+            type: GET_DATA,
+            payload: res.data
+        });
+
+    } catch (error) {
+        console.log(error);
+    }
 };

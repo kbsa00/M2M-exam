@@ -3,8 +3,16 @@ import Header from './Header';
 import LiveFeed from './LiveFeed';
 import Landing from './Landing'; 
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import Overview from './Overview'; 
+import {retrieveAllData} from '../actions/index';
+import {connect} from 'react-redux';
+
 
 class App extends Component {
+  componentDidMount(){
+    this.props.retrieveAllData();
+  }
+
   render() {
     return (
       <div className="App">
@@ -12,8 +20,9 @@ class App extends Component {
          <div>
           <Header/>
             <Switch>
-                <Route exact path='/' component={Landing} />
-                <Route path ='/live' component={LiveFeed} />
+                <Route exact path='/' component={Landing}/>
+                <Route path ='/live' component={LiveFeed}/>
+                <Route path ='/overview' component={Overview}/>
             </Switch>
          </div>        
         </BrowserRouter>
@@ -22,4 +31,5 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null, {retrieveAllData})(App);
+
