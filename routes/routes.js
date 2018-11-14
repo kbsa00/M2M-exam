@@ -1,13 +1,10 @@
 const Analytics = require('../model/analytics');
 const OverviewAnalytics = require('../model/overviewAnalytics');
+let {authenticate} = require('../middlewares/security'); 
+
 
 module.exports = (app) => {
-    app.get('/api/test', (req, res) => {
-        res.json({
-            test: "tester dette"
-        });
-    });
-
+  
     app.get('/api/UserAnalytics', (req, res) => {
         Analytics.getUserAnalytics(function (err, userdata) {
             if (err) throw err;
@@ -15,7 +12,7 @@ module.exports = (app) => {
         });
     });
 
-    app.post('/api/UserAnalytics', (req, res) => {
+    app.post('/api/UserAnalytics', authenticate, (req, res) => {
         let userdata = req.body;
         Analytics.AddUserAnalytics(userdata, function (err, callback) {
             if (err) throw err;
@@ -23,7 +20,7 @@ module.exports = (app) => {
         });
     });
 
-    app.post('/api/OverviewAnalytics', function (req, res) {
+    app.post('/api/OverviewAnalytics', authenticate, function (req, res) {
         let userData = req.body;
     
         OverviewAnalytics.findAnalytic(userData, function (err, foundUser) {

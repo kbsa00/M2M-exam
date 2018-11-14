@@ -25,7 +25,7 @@ client.on('message', (topic, message) => {
                     bpm: obj.bpm
                 })
                 .then((res) => {
-                    console.log('Able to push to database');
+                    
                 })
                 .catch(error => console.log(error));
         }
