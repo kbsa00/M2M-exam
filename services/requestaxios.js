@@ -1,3 +1,8 @@
+/**
+ * This file is handling MQTT aswell, but only MQTT-messages that regards updating
+ * or posting to the Database. After doing this, we then continue to post to our server
+ * using a HTTP-request.
+ */
 const axios = require('axios');
 const mqtt = require('mqtt');
 let keys = require('../config/keys');

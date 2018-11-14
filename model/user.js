@@ -1,5 +1,6 @@
 /**
- * Mongoose Schema for Login user. 
+ * Mongoose Schema for Login user. Notice that is is not being used in this
+ * application, but created so that we can easily implement it when we need to.
  */
 let mongoose = require('mongoose');
 

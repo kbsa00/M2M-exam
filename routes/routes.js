@@ -2,6 +2,13 @@ const Analytics = require('../model/analytics');
 const OverviewAnalytics = require('../model/overviewAnalytics');
 let {authenticate} = require('../middlewares/security'); 
 
+/**
+ * Routes for the Database/REST-Api that I created.
+ * Notice that routes with POST has to send with API-Key. 
+ * Routes without API are GET's. So it's easier for you to check the 
+ * Database without have to use a API-KEY.
+ * 
+ */
 
 module.exports = (app) => {
   

@@ -1,3 +1,9 @@
+/**
+ * This file handles MQTT and also Socket. I am using a IOSOCKET library 
+ * to send the relevent information to the Client. The Client is subscribing 
+ * to the socket.
+ */
+
 let today = new Date();
 let requests = require('../services/requestaxios');
 require('events').EventEmitter.prototype._maxListeners = 100;

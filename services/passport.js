@@ -1,3 +1,8 @@
+/**
+ * This code is for the login function that I wanted to implement but did not because
+ * i wanted it to be easier for you to interact with the webpage without have to login
+ */
+
 const passport = require('passport');
 let LocalUser = require('../model/user');
 const LocalStrategy = require('passport-local').Strategy;
