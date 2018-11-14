@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'; 
 import {retrieveAllData} from '../actions/index';
-import _ from 'lodash';
 import Chart from './chart'; 
 
 
@@ -13,12 +12,11 @@ class Overview extends Component {
    }
 
    renderData(data){
-    
       return(
         <tr key={data._id}>
         <td>{data.deviceID}</td>
-        <td>{<Chart data={[1,2,4,6.7]} color="orange"/>}</td>
-        <td>{data.temp}</td>
+        <td>{<Chart data={data.bpms} color="red"/>}</td>
+        <td>{<Chart data={data.temps} color="blue"/>}</td>
         <td>{data.movements}</td>
         </tr>
       );  
@@ -40,7 +38,7 @@ class Overview extends Component {
       <thead>
       <tr>
           <th>Device-id</th>
-          <th>Beats per Minute</th>
+          <th>Beats per Minutes</th>
           <th>Temprature</th>
           <th>Movements</th>
       </tr>
@@ -49,8 +47,6 @@ class Overview extends Component {
       {this.props.data.map(data => this.renderData(data))}
       
       </tbody>
-        
-     
     </table>
       </div>
     )
