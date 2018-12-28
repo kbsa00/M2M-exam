@@ -1,11 +1,14 @@
 ## M2M - Exam 
 
 #### Project :memo: 
-This project is created with following programming languages/frameworks
+This years exam of the course Machine to Machine communcation was about biometric. The exam was about creating a embedded solution for a company that was monotoring people while they were watching a tv pilot show. We had to use a heart monitor sensor (Max30102) to monitor the viewers bpm and then display this data and also saving it for Data Science purpose. This years assignment was pretty much open for us to solve. I decided to solve this exam with creating a webpage that could display live data of temprature, movement and bpm. Using MQTT protocol I transfered data from the embedded solution to my webpage. 
+
+This project is created with following programming languages/frameworks/protocols/database
 - Node.JS
 - React.JS
 - Redux
-
+- MongoDB
+- MQTT protocol
 ---
 #### Libraries :books: 
 Main libraries that has been used in this project.
